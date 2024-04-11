@@ -22,3 +22,27 @@ Array.prototype.customMap = function(callback) {
   const squaredNumbers = numbers.customMap(num => num * num);
   console.log(squaredNumbers); // Output: [1, 4, 9]
   
+
+  // custom filter method 
+  Array.prototype.customFilter = function(callback) {
+    // Create an empty array to store filtered elements
+    const filteredArray = [];
+  
+    // Iterate over each element of the array
+    for (let i = 0; i < this.length; i++) {
+      // Call the callback function with the current element and index
+      if (callback(this[i], i, this)) {
+        // If the callback returns true, add the element to the filtered array
+        filteredArray.push(this[i]);
+      }
+    }
+  
+    // Return the filtered array
+    return filteredArray;
+  };
+  
+  // Example usage:
+  const numbers1 = [1, 2, 3, 4, 5];
+  const evenNumbers = numbers1.customFilter(num => num % 2 === 0);
+  console.log(evenNumbers); // Output: [2, 4]
+  
